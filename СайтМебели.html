@@ -1,0 +1,581 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Furniture - Элитная мебель премиум класса</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #8B6B4A;
+            text-decoration: none;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #8B6B4A;
+        }
+        
+        .auth-buttons button {
+            padding: 10px 20px;
+            margin-left: 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .login-btn {
+            background-color: transparent;
+            border: 1px solid #8B6B4A;
+            color: #8B6B4A;
+        }
+        
+        .register-btn {
+            background-color: #8B6B4A;
+            color: white;
+        }
+        
+        .auth-buttons button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #8B6B4A;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #7a5a3a;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 36px;
+            color: #8B6B4A;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .collections {
+            background-color: #f9f9f9;
+        }
+        
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .collection-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .collection-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .collection-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .collection-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .collection-item:hover .collection-image img {
+            transform: scale(1.1);
+        }
+        
+        .collection-info {
+            padding: 20px;
+        }
+        
+        .collection-info h3 {
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+        
+        .testimonials {
+            text-align: center;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+            color: #8B6B4A;
+        }
+        
+        .contact {
+            background-color: #f9f9f9;
+        }
+        
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 30px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+        }
+        
+        .submit-btn {
+            background-color: #8B6B4A;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .submit-btn:hover {
+            background-color: #7a5a3a;
+        }
+        
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #8B6B4A;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #bbb;
+            font-size: 14px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">LuxuryFurniture</a>
+                <nav>
+                    <ul>
+                        <li><a href="#">Главная</a></li>
+                        <li><a href="#collections">Коллекции</a></li>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#testimonials">Отзывы</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="login-btn">Вход</button>
+                    <button class="register-btn">Регистрация</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Элитная мебель для изысканных интерьеров</h1>
+                <p>Создайте неповторимую атмосферу роскоши и комфорта с нашей эксклюзивной коллекцией мебели ручной работы</p>
+                <a href="#collections" class="cta-button">Посмотреть коллекции</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">О нашей компании</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>LuxuryFurniture - это более 20 лет опыта в создании эксклюзивной мебели премиум-класса. Наши мастера сочетают вековые традиции столярного искусства с современными технологиями и дизайном.</p>
+                    <p>Каждое изделие создается вручную из отборных пород дерева, натуральной кожи и других материалов высочайшего качества. Мы сотрудничаем с ведущими дизайнерами Европы, чтобы предложить вам самые актуальные и стильные решения для вашего интерьера.</p>
+                    <p>Наша философия - это бескомпромиссное качество, внимание к деталям и индивидуальный подход к каждому клиенту.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80" alt="Мастерская LuxuryFurniture">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="collections" class="collections">
+        <div class="container">
+            <h2 class="section-title">Наши коллекции</h2>
+            <div class="collection-grid">
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Коллекция Heritage">
+                    </div>
+                    <div class="collection-info">
+                        <h3>Коллекция Heritage</h3>
+                        <p>Классическая мебель с элементами старинного стиля, созданная для истинных ценителей традиций.</p>
+                    </div>
+                </div>
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Коллекция Modern Elegance">
+                    </div>
+                    <div class="collection-info">
+                        <h3>Коллекция Modern Elegance</h3>
+                        <p>Современные линии, элегантные формы и функциональность - идеальное сочетание для городского интерьера.</p>
+                    </div>
+                </div>
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Коллекция Royal">
+                    </div>
+                    <div class="collection-info">
+                        <h3>Коллекция Royal</h3>
+                        <p>Роскошная мебель с позолотой, бархатной обивкой и сложной резьбой - для тех, кто привык к лучшему.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Отзывы наших клиентов</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Ольга Смирнова">
+                    <p class="testimonial-text">"Заказывала гостиную из коллекции Modern Elegance. Качество превосходное, доставили точно в срок. Мебель выглядит даже лучше, чем на фото!"</p>
+                    <p class="testimonial-author">Ольга Смирнова</p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Дмитрий Иванов">
+                    <p class="testimonial-text">"Работаю с LuxuryFurniture уже 5 лет. Обустраивали офис и теперь заказываем мебель для дома. Всегда идеальное качество и сервис."</p>
+                    <p class="testimonial-author">Дмитрий Иванов</p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Екатерина Петрова">
+                    <p class="testimonial-text">"Купили спальню из коллекции Royal. Это настоящая ручная работа, чувствуется в каждой детали. Спасибо за прекрасный сервис!"</p>
+                    <p class="testimonial-author">Екатерина Петрова</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Свяжитесь с нами</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Наши контакты</h3>
+                    <p>Мы всегда рады помочь вам с выбором мебели и ответить на все ваши вопросы.</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Москва, ул. Тверская, 18</p>
+                    <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> info@luxuryfurniture.ru</p>
+                    <p><i class="fas fa-clock"></i> Пн-Пт: 10:00 - 20:00, Сб-Вс: 11:00 - 18:00</p>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Ваше имя</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Сообщение</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>LuxuryFurniture</h3>
+                    <p>Элитная мебель ручной работы из натуральных материалов. Создаем интерьеры мечты с 1999 года.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Меню</h3>
+                    <ul>
+                        <li><a href="#">Главная</a></li>
+                        <li><a href="#collections">Коллекции</a></li>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#testimonials">Отзывы</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li><a href="#">Москва, ул. Тверская, 18</a></li>
+                        <li><a href="#">+7 (495) 123-45-67</a></li>
+                        <li><a href="#">info@luxuryfurniture.ru</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Социальные сети</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-pinterest-p"></i> Pinterest</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 LuxuryFurniture. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Простые обработчики для кнопок входа и регистрации
+        document.querySelector('.login-btn').addEventListener('click', function() {
+            alert('Форма входа будет открыта здесь');
+        });
+        
+        document.querySelector('.register-btn').addEventListener('click', function() {
+            alert('Форма регистрации будет открыта здесь');
+        });
+        
+        // Плавная прокрутка для якорных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
